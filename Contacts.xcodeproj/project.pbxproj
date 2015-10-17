@@ -9,11 +9,12 @@
 /* Begin PBXBuildFile section */
 		F20918A51BD2FDE700FD60EB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F20918A41BD2FDE700FD60EB /* main.m */; };
 		F20918A81BD2FDE700FD60EB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F20918A71BD2FDE700FD60EB /* AppDelegate.m */; };
-		F20918AB1BD2FDE700FD60EB /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F20918AA1BD2FDE700FD60EB /* ViewController.m */; };
-		F20918AE1BD2FDE700FD60EB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F20918AC1BD2FDE700FD60EB /* Main.storyboard */; };
+		F20918AE1BD2FDE700FD60EB /* Contact.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F20918AC1BD2FDE700FD60EB /* Contact.storyboard */; };
 		F20918B11BD2FDE700FD60EB /* Contacts.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F20918AF1BD2FDE700FD60EB /* Contacts.xcdatamodeld */; };
 		F20918B31BD2FDE700FD60EB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F20918B21BD2FDE700FD60EB /* Assets.xcassets */; };
 		F20918B61BD2FDE700FD60EB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F20918B41BD2FDE700FD60EB /* LaunchScreen.storyboard */; };
+		F20918C21BD3013000FD60EB /* Contact.m in Sources */ = {isa = PBXBuildFile; fileRef = F20918C11BD3013000FD60EB /* Contact.m */; settings = {ASSET_TAGS = (); }; };
+		F20918C51BD3118900FD60EB /* ContactListTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F20918C41BD3118900FD60EB /* ContactListTVC.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,13 +22,15 @@
 		F20918A41BD2FDE700FD60EB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		F20918A61BD2FDE700FD60EB /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		F20918A71BD2FDE700FD60EB /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		F20918A91BD2FDE700FD60EB /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		F20918AA1BD2FDE700FD60EB /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		F20918AD1BD2FDE700FD60EB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		F20918AD1BD2FDE700FD60EB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Contact.storyboard; sourceTree = "<group>"; };
 		F20918B01BD2FDE700FD60EB /* Contacts.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Contacts.xcdatamodel; sourceTree = "<group>"; };
 		F20918B21BD2FDE700FD60EB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F20918B51BD2FDE700FD60EB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F20918B71BD2FDE700FD60EB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F20918C01BD3013000FD60EB /* Contact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Contact.h; sourceTree = "<group>"; };
+		F20918C11BD3013000FD60EB /* Contact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Contact.m; sourceTree = "<group>"; };
+		F20918C31BD3118900FD60EB /* ContactListTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ContactListTVC.h; path = ../ContactListTVC.h; sourceTree = "<group>"; };
+		F20918C41BD3118900FD60EB /* ContactListTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ContactListTVC.m; path = ../ContactListTVC.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,11 +63,9 @@
 		F20918A21BD2FDE700FD60EB /* Contacts */ = {
 			isa = PBXGroup;
 			children = (
-				F20918A61BD2FDE700FD60EB /* AppDelegate.h */,
-				F20918A71BD2FDE700FD60EB /* AppDelegate.m */,
-				F20918A91BD2FDE700FD60EB /* ViewController.h */,
-				F20918AA1BD2FDE700FD60EB /* ViewController.m */,
-				F20918AC1BD2FDE700FD60EB /* Main.storyboard */,
+				F20918BF1BD2FE2500FD60EB /* Data */,
+				F20918BE1BD2FE0500FD60EB /* Main */,
+				F20918BD1BD2FDF100FD60EB /* Delegate */,
 				F20918B21BD2FDE700FD60EB /* Assets.xcassets */,
 				F20918B41BD2FDE700FD60EB /* LaunchScreen.storyboard */,
 				F20918B71BD2FDE700FD60EB /* Info.plist */,
@@ -80,6 +81,34 @@
 				F20918A41BD2FDE700FD60EB /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F20918BD1BD2FDF100FD60EB /* Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				F20918A61BD2FDE700FD60EB /* AppDelegate.h */,
+				F20918A71BD2FDE700FD60EB /* AppDelegate.m */,
+			);
+			name = Delegate;
+			sourceTree = "<group>";
+		};
+		F20918BE1BD2FE0500FD60EB /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				F20918C31BD3118900FD60EB /* ContactListTVC.h */,
+				F20918C41BD3118900FD60EB /* ContactListTVC.m */,
+				F20918AC1BD2FDE700FD60EB /* Contact.storyboard */,
+			);
+			name = Main;
+			sourceTree = "<group>";
+		};
+		F20918BF1BD2FE2500FD60EB /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				F20918C01BD3013000FD60EB /* Contact.h */,
+				F20918C11BD3013000FD60EB /* Contact.m */,
+			);
+			name = Data;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -141,7 +170,7 @@
 			files = (
 				F20918B61BD2FDE700FD60EB /* LaunchScreen.storyboard in Resources */,
 				F20918B31BD2FDE700FD60EB /* Assets.xcassets in Resources */,
-				F20918AE1BD2FDE700FD60EB /* Main.storyboard in Resources */,
+				F20918AE1BD2FDE700FD60EB /* Contact.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -153,7 +182,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				F20918B11BD2FDE700FD60EB /* Contacts.xcdatamodeld in Sources */,
-				F20918AB1BD2FDE700FD60EB /* ViewController.m in Sources */,
+				F20918C21BD3013000FD60EB /* Contact.m in Sources */,
+				F20918C51BD3118900FD60EB /* ContactListTVC.m in Sources */,
 				F20918A81BD2FDE700FD60EB /* AppDelegate.m in Sources */,
 				F20918A51BD2FDE700FD60EB /* main.m in Sources */,
 			);
@@ -162,12 +192,12 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		F20918AC1BD2FDE700FD60EB /* Main.storyboard */ = {
+		F20918AC1BD2FDE700FD60EB /* Contact.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				F20918AD1BD2FDE700FD60EB /* Base */,
 			);
-			name = Main.storyboard;
+			name = Contact.storyboard;
 			sourceTree = "<group>";
 		};
 		F20918B41BD2FDE700FD60EB /* LaunchScreen.storyboard */ = {
