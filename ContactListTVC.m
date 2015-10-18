@@ -10,7 +10,10 @@
 
 @interface ContactListTVC ()
 
+
 @end
+
+
 
 @implementation ContactListTVC
 
@@ -30,26 +33,24 @@
 }
 
 #pragma mark - Table view data source
-
+//Number of sections to display.
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Incomplete implementation, return the number of sections
-    return 0;
+    return 1;
 }
-
+//Number of rows to display in each section.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete implementation, return the number of rows
-    return 0;
+    return 5;
 }
 
-/*
+#pragma mark - Table view delegate methods 
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"contactCell" forIndexPath:indexPath];
     
-    // Configure the cell...
+
     
     return cell;
 }
-*/
 
 /*
 // Override to support conditional editing of the table view.
