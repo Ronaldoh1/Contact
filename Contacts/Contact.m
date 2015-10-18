@@ -24,6 +24,7 @@
     self.smallImageURL = [NSURL URLWithString:[dictionary objectForKey:@"smallImageURL"]];
     self.birthdate = [NSDate dateWithTimeIntervalSince1970:(NSTimeInterval)[[dictionary objectForKey:@"birthdate"] doubleValue]];
     self.phoneNumbersDict = [dictionary objectForKey:@"phone"];
+ 
 
     return self;
 }

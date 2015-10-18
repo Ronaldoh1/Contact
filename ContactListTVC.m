@@ -8,14 +8,17 @@
 
 #import "ContactListTVC.h"
 #import "ContactsDownloader.h"
+#import "Contact.h"
+#import "ContactCustomCell.h"
 
 @interface ContactListTVC ()<ContactsDownloaderDelegate>
 
 @property ContactsDownloader *downloader;
+@property NSMutableArray *contactsArray;
 
 @end
 
-static NSString *const cellIdentifier = @"itemCell";
+static NSString *const cellIdentifier = @"contactCell";
 
 @implementation ContactListTVC
 
@@ -37,6 +40,9 @@ static NSString *const cellIdentifier = @"itemCell";
     titleView.textColor = [UIColor orangeColor];
     [self.navigationItem setTitleView:titleView];
 
+    //allocate and initialize array to hold Contacts
+    self.contactsArray = [NSMutableArray new];
+
     self.downloader = [ContactsDownloader new];
     self.downloader.delegate = self;
     [self.downloader downloadContactsFromEndPoint];
@@ -51,7 +57,13 @@ static NSString *const cellIdentifier = @"itemCell";
 
 -(void)gotContacts:(NSDictionary *)dictionary{
 
-    NSLog(@"%@", dictionary );
+    for (NSDictionary *dict in dictionary) {
+
+        Contact *contact = [[Contact alloc]initWithDictionary:dict];
+        [self.contactsArray addObject:contact];
+    }
+
+    [self.tableView reloadData];
 }
 
 #pragma mark - Table view data source
@@ -61,13 +73,64 @@ static NSString *const cellIdentifier = @"itemCell";
 }
 //Number of rows to display in each section.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 5;
+    return self.contactsArray.count;
 }
 
 #pragma mark - Table view delegate methods 
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"contactCell" forIndexPath:indexPath];
+//In thisc cellForRowAtIndexPath: we are basically pupulating each cell with the appropriate deatails for each contact with name, image phone number etc. To propertly load the images and avoid visual bugs (wrong image displayed when scrolling), we need to reset the last image for the dequeued cell - otherwise it might still be there. Another problem solved is that asynchonous request might not be finished before the cell scrolls off the screen. This will ensure that we dont accidentaly update the contact image for a row that has scrolled off the screen. 
+- (ContactCustomCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+
+    //initialize the cell
+    ContactCustomCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+
+    if (cell == nil) {
+        cell = [[ContactCustomCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+    }
+
+    cell.smallContactImage.image = nil;
+
+    //create a contact for each object in the array.
+    Contact *contact = (Contact *)self.contactsArray[indexPath.row];
+
+    //Get the contact image
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+
+        NSData *smallImageData = [NSData dataWithContentsOfURL:contact.smallImageURL];
+
+
+
+            if (smallImageData != nil) {
+                //Update the UI on the main thread - set the cell's contact image to image retrieved.
+
+                UIImage *image = [UIImage imageWithData:smallImageData];
+                dispatch_sync(dispatch_get_main_queue(), ^{
+
+                    ContactCustomCell *updateCell = (id)[tableView cellForRowAtIndexPath:indexPath];
+                    
+
+                updateCell.smallContactImage.alpha = 0.0;
+                [UIView animateWithDuration:0.5 animations:^{
+
+
+                    updateCell.smallContactImage.alpha = 1.0;
+
+                    updateCell.smallContactImage.image = image;
+                }];
+
+             });
+
+            }else{
+                cell.smallContactImage.image = [UIImage imageNamed:@"defaultImage.png"];
+            }
+
+
+
+    });
+
+    //populate the cell
+    cell.nameLabel.text = contact.name;
+    cell.callButton.titleLabel.text = @"240-506-1982";
     
 
     

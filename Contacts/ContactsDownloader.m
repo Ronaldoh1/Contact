@@ -42,7 +42,7 @@
 
     NSDictionary *contactsDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
 
-    NSMutableArray *tempContactsArray = [NSMutableArray new];
+    //NSMutableArray *tempContactsArray = [NSMutableArray new];
 
 
 //    for (NSDictionary *tempDict in contactsDictionary) {
