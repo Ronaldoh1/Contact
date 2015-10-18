@@ -11,6 +11,8 @@
 @interface ContactCustomCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *smallContactImage;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
-@property (weak, nonatomic) IBOutlet UIButton *callButton;
+
+@property (weak, nonatomic) IBOutlet UILabel *phoneNumberLabel;
+@property (weak, nonatomic) IBOutlet UIButton *makeCallButton;
 
 @end

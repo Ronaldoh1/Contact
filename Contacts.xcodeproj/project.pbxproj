@@ -19,6 +19,7 @@
 		F20918CA1BD3206000FD60EB /* favoriteIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = F20918C91BD3206000FD60EB /* favoriteIcon.png */; settings = {ASSET_TAGS = (); }; };
 		F20918D31BD3269900FD60EB /* ContactsDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = F20918D21BD3269900FD60EB /* ContactsDownloader.m */; settings = {ASSET_TAGS = (); }; };
 		F22B6EA41BD43A1100D566DD /* defaultImage.png in Resources */ = {isa = PBXBuildFile; fileRef = F22B6EA31BD43A1100D566DD /* defaultImage.png */; settings = {ASSET_TAGS = (); }; };
+		F22B6EA61BD44F1200D566DD /* phoneIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = F22B6EA51BD44F1200D566DD /* phoneIcon.png */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +42,7 @@
 		F20918D11BD3269900FD60EB /* ContactsDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactsDownloader.h; sourceTree = "<group>"; };
 		F20918D21BD3269900FD60EB /* ContactsDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactsDownloader.m; sourceTree = "<group>"; };
 		F22B6EA31BD43A1100D566DD /* defaultImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = defaultImage.png; sourceTree = "<group>"; };
+		F22B6EA51BD44F1200D566DD /* phoneIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = phoneIcon.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +132,7 @@
 			isa = PBXGroup;
 			children = (
 				F20918C91BD3206000FD60EB /* favoriteIcon.png */,
+				F22B6EA51BD44F1200D566DD /* phoneIcon.png */,
 				F22B6EA31BD43A1100D566DD /* defaultImage.png */,
 			);
 			name = Images;
@@ -197,6 +200,7 @@
 				F20918B61BD2FDE700FD60EB /* LaunchScreen.storyboard in Resources */,
 				F20918B31BD2FDE700FD60EB /* Assets.xcassets in Resources */,
 				F20918AE1BD2FDE700FD60EB /* Contact.storyboard in Resources */,
+				F22B6EA61BD44F1200D566DD /* phoneIcon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

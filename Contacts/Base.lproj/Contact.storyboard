@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="7G0-VE-okM">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Contact ListTVC-->
@@ -21,36 +22,78 @@
                                     <rect key="frame" x="0.0" y="0.0" width="287" height="100"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="defaultImage.png" translatesAutoresizingMaskIntoConstraints="NO" id="JmY-XC-gzy">
-                                            <rect key="frame" x="8" y="13" width="75" height="75"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultImage.png" translatesAutoresizingMaskIntoConstraints="NO" id="JmY-XC-gzy">
+                                            <rect key="frame" x="8" y="12" width="75" height="75"/>
                                             <animations/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="75" id="WHI-b0-uQl"/>
+                                                <constraint firstAttribute="width" constant="75" id="xc4-Cx-bD5"/>
+                                            </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xap-rS-NR8">
-                                            <rect key="frame" x="91" y="13" width="196" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xap-rS-NR8">
+                                            <rect key="frame" x="91" y="13" width="153" height="21"/>
                                             <animations/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <attributedString key="attributedText">
+                                                <fragment content="Name Label">
+                                                    <attributes>
+                                                        <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <font key="NSFont" size="17" name="HelveticaNeue-Bold"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="favoriteIcon.png" translatesAutoresizingMaskIntoConstraints="NO" id="FPj-ax-7qp">
-                                            <rect key="frame" x="252" y="36" width="28" height="28"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yfG-TK-B0P">
+                                            <rect key="frame" x="91" y="42" width="153" height="21"/>
                                             <animations/>
-                                        </imageView>
-                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qx6-KK-Pnw">
-                                            <rect key="frame" x="91" y="40" width="153" height="30"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mkf-hk-Jav">
+                                            <rect key="frame" x="246" y="33" width="41" height="41"/>
                                             <animations/>
-                                            <state key="normal" title="Button"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="41" id="cKt-IJ-lfD"/>
+                                                <constraint firstAttribute="width" constant="41" id="ivs-Mb-oVF"/>
+                                            </constraints>
+                                            <state key="normal" backgroundImage="phoneIcon.png"/>
                                             <connections>
-                                                <action selector="onMakeCallButtonTapped:" destination="35R-VY-e8f" eventType="touchUpInside" id="nGe-9L-XfR"/>
+                                                <action selector="onMakeCallButtonTapped:" destination="35R-VY-e8f" eventType="touchUpInside" id="opE-dA-cXF"/>
                                             </connections>
                                         </button>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="favoriteIcon.png" translatesAutoresizingMaskIntoConstraints="NO" id="FPj-ax-7qp">
+                                            <rect key="frame" x="255" y="2" width="23" height="23"/>
+                                            <animations/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="23" id="E7z-rQ-HpW"/>
+                                                <constraint firstAttribute="width" constant="23" id="ydj-BF-88B"/>
+                                            </constraints>
+                                        </imageView>
                                     </subviews>
                                     <animations/>
+                                    <constraints>
+                                        <constraint firstItem="JmY-XC-gzy" firstAttribute="centerY" secondItem="OGt-bn-lyQ" secondAttribute="centerY" id="6Ia-TR-1it"/>
+                                        <constraint firstItem="Mkf-hk-Jav" firstAttribute="top" secondItem="FPj-ax-7qp" secondAttribute="bottom" constant="8" id="7kT-Ug-yBN"/>
+                                        <constraint firstItem="yfG-TK-B0P" firstAttribute="top" secondItem="Xap-rS-NR8" secondAttribute="bottom" constant="8" id="9gq-s7-io7"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="yfG-TK-B0P" secondAttribute="trailing" constant="35" id="HvZ-Sj-gOo"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="Mkf-hk-Jav" secondAttribute="trailing" constant="-8" id="Ra2-mh-S20"/>
+                                        <constraint firstItem="JmY-XC-gzy" firstAttribute="centerY" secondItem="OGt-bn-lyQ" secondAttribute="centerY" id="Vta-kq-qhG"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="Xap-rS-NR8" secondAttribute="trailing" constant="35" id="Z1f-Lv-5ff"/>
+                                        <constraint firstItem="yfG-TK-B0P" firstAttribute="leading" secondItem="JmY-XC-gzy" secondAttribute="trailing" constant="8" id="c6l-1L-jcT"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="FPj-ax-7qp" secondAttribute="trailing" constant="1" id="d2E-Wf-stK"/>
+                                        <constraint firstItem="FPj-ax-7qp" firstAttribute="top" secondItem="OGt-bn-lyQ" secondAttribute="topMargin" constant="-6" id="dXh-nj-bjy"/>
+                                        <constraint firstItem="Xap-rS-NR8" firstAttribute="leading" secondItem="JmY-XC-gzy" secondAttribute="trailing" constant="8" id="mzt-bW-pRo"/>
+                                        <constraint firstItem="Xap-rS-NR8" firstAttribute="top" secondItem="OGt-bn-lyQ" secondAttribute="topMargin" constant="5" id="slg-zL-jGC"/>
+                                        <constraint firstAttribute="leadingMargin" secondItem="JmY-XC-gzy" secondAttribute="leading" id="zhH-di-Luh"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <animations/>
                                 <connections>
-                                    <outlet property="callButton" destination="qx6-KK-Pnw" id="rcW-nZ-4Oe"/>
+                                    <outlet property="makeCallButton" destination="Mkf-hk-Jav" id="WvB-jN-apv"/>
                                     <outlet property="nameLabel" destination="Xap-rS-NR8" id="fog-Vo-Y0m"/>
+                                    <outlet property="phoneNumberLabel" destination="yfG-TK-B0P" id="alo-Lx-wbG"/>
                                     <outlet property="smallContactImage" destination="JmY-XC-gzy" id="eBg-B9-1Ue"/>
                                     <segue destination="Zud-eW-EX9" kind="show" id="1XF-0i-xBz"/>
                                 </connections>
@@ -110,7 +153,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="defaultImage.png" width="1200" height="1200"/>
+        <image name="defaultImage.png" width="300" height="300"/>
         <image name="favoriteIcon.png" width="426" height="409"/>
+        <image name="phoneIcon.png" width="300" height="302"/>
     </resources>
 </document>

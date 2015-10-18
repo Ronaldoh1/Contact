@@ -130,7 +130,7 @@ static NSString *const cellIdentifier = @"contactCell";
 
     //populate the cell
     cell.nameLabel.text = contact.name;
-    cell.callButton.titleLabel.text = @"240-506-1982";
+    cell.phoneNumberLabel.text = [contact.phoneNumbersDict objectForKey:@"work"];
     
 
     
