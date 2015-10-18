@@ -26,14 +26,31 @@
 
     NSURLSession *session = [NSURLSession sharedSession];
 
-    [session dataTaskWithURL:url completionHandler:^(NSData * data, NSURLResponse *  response, NSError *  error) {
+   [[session dataTaskWithURL:url completionHandler:^(NSData * data, NSURLResponse *  response, NSError *  error) {
 
 
-        NSLog(@"%@", data);
+       if (data != nil) {
+
+           [self processData:data];
+       }else{
+           NSLog(@"there was an error downloading your contacts");
+
+       }
 
 
-    }];
 
+
+  }] resume];
+
+
+}
+
+//Need to store all of the items in an array.
+
+-(void)processData:(NSData *)data{
+
+
+    
 
 
 

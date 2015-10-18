@@ -7,13 +7,15 @@
 //
 
 #import "ContactListTVC.h"
+#import "ContactsDownloader.h"
 
-@interface ContactListTVC ()
+@interface ContactListTVC ()<ContactsDownloaderDelegate>
 
+@property ContactsDownloader *downloader;
 
 @end
 
-
+static NSString *const cellIdentifier = @"itemCell";
 
 @implementation ContactListTVC
 
@@ -25,11 +27,22 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+
+    self.downloader = [ContactsDownloader new];
+    self.downloader.ParentVC = self;
+    [self.downloader downloadContactsFromEndPoint];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - Downloader Delegate
+
+-(void)gotContacts:(NSArray *)array{
+
+    NSLog(@"%@", array);
 }
 
 #pragma mark - Table view data source
