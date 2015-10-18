@@ -28,8 +28,17 @@ static NSString *const cellIdentifier = @"itemCell";
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 
+    // hange the Nav Title and set it to white.
+    UILabel *titleView = (UILabel *)self.navigationItem.titleView;
+    titleView = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 50, 30)];
+    titleView.font = [UIFont fontWithName:@"Helvetica Bold" size:22];
+    titleView.text = @"Contacts";
+    titleView.textAlignment = NSTextAlignmentCenter;
+    titleView.textColor = [UIColor orangeColor];
+    [self.navigationItem setTitleView:titleView];
+
     self.downloader = [ContactsDownloader new];
-    self.downloader.ParentVC = self;
+    self.downloader.delegate = self;
     [self.downloader downloadContactsFromEndPoint];
 }
 
@@ -40,9 +49,9 @@ static NSString *const cellIdentifier = @"itemCell";
 
 #pragma mark - Downloader Delegate
 
--(void)gotContacts:(NSArray *)array{
+-(void)gotContacts:(NSDictionary *)dictionary{
 
-    NSLog(@"%@", array);
+    NSLog(@"%@", dictionary );
 }
 
 #pragma mark - Table view data source
@@ -108,5 +117,30 @@ static NSString *const cellIdentifier = @"itemCell";
     // Pass the selected object to the new view controller.
 }
 */
+
+//Helper Methods to display alert to user.
+
+-(void)displayAlertMessage:(NSString *)title andWith:(NSString *)message{
+
+    //1. Create a UIAlertController
+
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
+
+    //2. Create a UIAlertController to be added to the alert.
+
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+
+        [alertController dismissViewControllerAnimated:YES completion:nil];
+    }];
+
+    //3. Add the action to the controller.
+    [alertController addAction:okAction];
+
+
+    [self presentViewController:alertController animated:YES completion:nil];
+    
+    
+    
+}
 
 @end

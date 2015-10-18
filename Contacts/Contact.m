@@ -18,8 +18,12 @@
     self = [super self];
 
     self.name = [dictionary objectForKey:@"name"];
-
-
+    self.employeeId = [[dictionary objectForKey:@"employeeId"] integerValue];
+    self.companyName = [dictionary objectForKey:@"company"];
+    self.detailsURL = [NSURL URLWithString:[dictionary objectForKey:@"detailsURL"]];
+    self.smallImageURL = [NSURL URLWithString:[dictionary objectForKey:@"smallImageURL"]];
+    self.birthdate = [NSDate dateWithTimeIntervalSince1970:(NSTimeInterval)[[dictionary objectForKey:@"birthdate"] doubleValue]];
+    self.phoneNumbersDict = [dictionary objectForKey:@"phone"];
 
     return self;
 }

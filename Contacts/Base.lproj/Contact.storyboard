@@ -18,7 +18,7 @@
                                 <rect key="frame" x="0.0" y="92" width="320" height="101"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="35R-VY-e8f" id="OGt-bn-lyQ">
-                                    <rect key="frame" x="0.0" y="0.0" width="287" height="101"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="287" height="100"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="defaultImage.png" translatesAutoresizingMaskIntoConstraints="NO" id="JmY-XC-gzy">
@@ -29,7 +29,7 @@
                                             <rect key="frame" x="91" y="13" width="196" height="21"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="favoriteIcon.png" translatesAutoresizingMaskIntoConstraints="NO" id="FPj-ax-7qp">

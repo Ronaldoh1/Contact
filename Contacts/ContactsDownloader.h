@@ -7,17 +7,19 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import <UIKit/UIKit.h>
 @protocol ContactsDownloaderDelegate <NSObject>
 
--(void)gotContacts:(NSArray *)array;
+-(void)gotContacts:(NSDictionary *)dictionary;
 
 @end
 
 @interface ContactsDownloader : NSObject
 
 @property NSString *apString;
-@property id<ContactsDownloaderDelegate>ParentVC;
+
+//objects the current class have a delegate that can be of any type (id) but must conform to the ContactsDownloader protocol. The class containing delegate knows that there are specific messages tha ti can send to its delegate and know that the delegate will respond  to them. 
+@property id<ContactsDownloaderDelegate>delegate;
 
 -(void)downloadContactsFromEndPoint;
 

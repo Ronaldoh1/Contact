@@ -11,8 +11,9 @@
 @interface Contact : NSObject
 
 @property NSString *name;
-@property NSInteger *employeeId;
+@property NSInteger employeeId;
 @property NSString *companyName;
+@property NSURL *detailsURL;
 @property NSURL *smallImageURL;
 @property NSURL *largeImageURL;
 @property NSDate *birthdate;
