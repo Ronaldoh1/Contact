@@ -18,7 +18,6 @@
 
     NSURL *url = [NSURL URLWithString:@"https://solstice.applauncher.com/external/contacts.json"];
 
-
     //2. Get items from Solstice API - create NSRURLSession (NSURLConnection has been deprecated for iOS9).
 
     NSURLSession *session = [NSURLSession sharedSession];
@@ -33,7 +32,6 @@
 
   }] resume];
 
-
 }
 
 //Need to store all of the items in an array.
@@ -42,20 +40,7 @@
 
     NSDictionary *contactsDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
 
-    //NSMutableArray *tempContactsArray = [NSMutableArray new];
-
-
-//    for (NSDictionary *tempDict in contactsDictionary) {
-//
-//        [tempContactsArray addObject:tempDict];
-//    }
-
     [self.delegate gotContacts:contactsDictionary];
 
-
 }
-
-
-
-
 @end

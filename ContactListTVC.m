@@ -26,12 +26,8 @@ static NSString *const cellIdentifier = @"contactCell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+
+    self.navigationItem.rightBarButtonItem = self.editButtonItem;
 
     // Add titleView to NavBar
     UILabel *titleView = (UILabel *)self.navigationItem.titleView;
@@ -84,9 +80,9 @@ static NSString *const cellIdentifier = @"contactCell";
     return self.contactsArray.count;
 }
 
-#pragma mark - Table view delegate methods 
+#pragma mark - Table view delegate methods
 
-//In thisc cellForRowAtIndexPath: we are basically pupulating each cell with the appropriate deatails for each contact with name, image phone number etc. To propertly load the images and avoid visual bugs (wrong image displayed when scrolling), we need to reset the last image for the dequeued cell - otherwise it might still be there. Another problem solved is that asynchonous request might not be finished before the cell scrolls off the screen. This will ensure that we dont accidentaly update the contact image for a row that has scrolled off the screen. 
+//In this method -> cellForRowAtIndexPath: we are basically pupulating each cell with the appropriate deatails for each contact with name, image phone number etc. To propertly load the images and avoid visual bugs (wrong image displayed when scrolling), we need to reset the last image for the dequeued cell - otherwise it might still be there. Another problem solved is that asynchonous request might not be finished before the cell scrolls off the screen. This will ensure that we dont accidentaly update the contact image for a row that has scrolled off the screen.
 - (ContactCustomCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 
     //initialize the cell
@@ -106,42 +102,33 @@ static NSString *const cellIdentifier = @"contactCell";
 
         NSData *smallImageData = [NSData dataWithContentsOfURL:contact.smallImageURL];
 
+        if (smallImageData != nil) {
+            //Update the UI on the main thread - set the cell's contact image to image retrieved.
 
+            UIImage *image = [UIImage imageWithData:smallImageData];
+            dispatch_sync(dispatch_get_main_queue(), ^{
 
-            if (smallImageData != nil) {
-                //Update the UI on the main thread - set the cell's contact image to image retrieved.
-
-                UIImage *image = [UIImage imageWithData:smallImageData];
-                dispatch_sync(dispatch_get_main_queue(), ^{
-
-                    ContactCustomCell *updateCell = (id)[tableView cellForRowAtIndexPath:indexPath];
-                    
+                ContactCustomCell *updateCell = (id)[tableView cellForRowAtIndexPath:indexPath];
 
                 updateCell.smallContactImage.alpha = 0.0;
                 [UIView animateWithDuration:0.5 animations:^{
 
-
-                    updateCell.smallContactImage.alpha = 1.0;
-
                     updateCell.smallContactImage.image = image;
                 }];
 
-             });
+            });
 
-            }else{
-                cell.smallContactImage.image = [UIImage imageNamed:@"defaultImage.png"];
-            }
-
-
+        }else{
+            cell.smallContactImage.image = [UIImage imageNamed:@"defaultImage.png"];
+        }
 
     });
 
     //populate the cell
     cell.nameLabel.text = contact.name;
     cell.phoneNumberLabel.text = [contact.phoneNumbersDict objectForKey:@"work"];
-    
 
-    
+
     return cell;
 }
 //We can allow the user to make calls directly from list, we just simply need to get the indexPath for the cell selected and use it to get the corresponding number. Once you have the number, use the [UIApplication SharedApplication] to open the phone application and prompt the user to make the call.
@@ -160,19 +147,16 @@ static NSString *const cellIdentifier = @"contactCell";
 
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:phoneString]];
 
-
-
 }
-
 
 
 /*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
+ // Override to support conditional editing of the table view.
+ - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+ // Return NO if you do not want the specified item to be editable.
+ return YES;
+ }
+ */
 
 // Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -181,22 +165,8 @@ static NSString *const cellIdentifier = @"contactCell";
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
     } else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
+    }
 }
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
 #pragma mark - Navigation
 
@@ -215,8 +185,8 @@ static NSString *const cellIdentifier = @"contactCell";
     if ([segue.identifier isEqualToString:@"toDetailVC"]) {
 
         destinationVC.contactToDisplay = (Contact *)self.sortedContactsArray[indexPath.row];
-      
-        
+
+
     }
 }
 
@@ -231,17 +201,15 @@ static NSString *const cellIdentifier = @"contactCell";
     //2. Create a UIAlertController to be added to the alert.
 
     UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-
+        
         [alertController dismissViewControllerAnimated:YES completion:nil];
     }];
-
+    
     //3. Add the action to the controller.
     [alertController addAction:okAction];
-
-
+    
+    
     [self presentViewController:alertController animated:YES completion:nil];
-    
-    
     
 }
 

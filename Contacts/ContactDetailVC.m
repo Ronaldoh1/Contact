@@ -95,7 +95,7 @@
 
 //Need to store all of the items in an array.
 //We get back a dictionary of dictionary
-//use the information from dictionary to update the UI Elements 
+//use the information from dictionary to update the UI Elements
 -(void)processData:(NSData *)data{
 
     self.contactDetailDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
@@ -113,7 +113,7 @@
 
         self.favoriteImage.alpha = 1.0;
     }
-    
+
 
 
 }
@@ -142,8 +142,8 @@
             });
 
         }
-        
-        
+
+
     });
 }
 - (IBAction)onCallWorkPhoneButtonTapped:(UIButton *)sender {
@@ -158,7 +158,7 @@
 }
 - (IBAction)onCallMobilePhoneButtonTapped:(UIButton *)sender {
 
-   [self makeCallwithPhoneNumber:[self.contactToDisplay.phoneNumbersDict objectForKey:@"mobile"]];
+    [self makeCallwithPhoneNumber:[self.contactToDisplay.phoneNumbersDict objectForKey:@"mobile"]];
 }
 - (IBAction)onMapButtonTapped:(UIButton *)sender {
 
@@ -182,20 +182,20 @@
 
 
 
-        //allocate mail composer
-        MFMailComposeViewController *composer = [MFMailComposeViewController new];
-        //set the delegate
-        [composer setMailComposeDelegate:self];
+    //allocate mail composer
+    MFMailComposeViewController *composer = [MFMailComposeViewController new];
+    //set the delegate
+    [composer setMailComposeDelegate:self];
 
-        //check if devise can send email
+    //check if devise can send email
 
-        if ([MFMailComposeViewController canSendMail]){
-            [composer setToRecipients:[NSArray arrayWithObjects:[self.contactDetailDictionary objectForKey:@"email"], nil]];
-            [composer setSubject:@"Subject"];
-            [composer setMessageBody:@"Message Body" isHTML:NO];
-            [composer setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
-              [self presentViewController:composer animated:YES completion:nil];
-        }
+    if ([MFMailComposeViewController canSendMail]){
+        [composer setToRecipients:[NSArray arrayWithObjects:[self.contactDetailDictionary objectForKey:@"email"], nil]];
+        [composer setSubject:@"Subject"];
+        [composer setMessageBody:@"Message Body" isHTML:NO];
+        [composer setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
+        [self presentViewController:composer animated:YES completion:nil];
+    }
 
 }
 
@@ -214,17 +214,17 @@
     } else {
         [self displayAlertWithTitle:@"Error Sending Email" andWithMessage:nil];
         [self dismissViewControllerAnimated:YES completion:nil];
-        
+
     }
 }
 #pragma Helper Methods
 
 -(void)makeCallwithPhoneNumber:(NSString *)phoneNumberString{
 
-        NSString *phoneString = [NSString stringWithFormat:@"telprompt://%@",phoneNumberString];
+    NSString *phoneString = [NSString stringWithFormat:@"telprompt://%@",phoneNumberString];
 
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:phoneString]];
-    
+
 
 }
 -(void)displayAlertWithTitle:(NSString *)title andWithMessage:(NSString *)message{
@@ -241,12 +241,12 @@
                          handler:^(UIAlertAction * action)
                          {
                              [alert dismissViewControllerAnimated:YES completion:nil];
-
+                             
                          }];
-
-
+    
+    
     [alert addAction:ok];
-
+    
     [self presentViewController:alert animated:YES completion:nil];
 }
 
