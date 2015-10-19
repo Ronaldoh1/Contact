@@ -215,6 +215,7 @@ static NSString *const cellIdentifier = @"contactCell";
     if ([segue.identifier isEqualToString:@"toDetailVC"]) {
 
         destinationVC.contactToDisplay = (Contact *)self.sortedContactsArray[indexPath.row];
+      
         
     }
 }

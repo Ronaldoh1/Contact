@@ -21,6 +21,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *addressLabel;
 @property NSDictionary *contactDetailDictionary;
 @property (weak, nonatomic) IBOutlet UILabel *emailLabel;
+@property (weak, nonatomic) IBOutlet UILabel *birthdayLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *favoriteImage;
 
 @end
 
@@ -29,8 +31,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    //Change the back button title.
-    self.navigationItem.leftBarButtonItem.title = @"All Contacts";
+
     //Make Large Contact Image Circular
     self.largeContactImage.layer.cornerRadius = self.largeContactImage.frame.size.height / 2;
     self.largeContactImage.layer.masksToBounds = YES;
@@ -47,15 +48,19 @@
     [self.navigationItem setTitleView:titleView];
 
 
-
+    //Update UI Elements
     self.nameTextField.text = self.contactToDisplay.name;
     self.companyNameTextField.text = self.contactToDisplay.companyName;
-
     self.workPhoneNumber.text = [self.contactToDisplay.phoneNumbersDict objectForKey:@"work"];
     self.homePhoneNumber.text = [self.contactToDisplay.phoneNumbersDict objectForKey:@"home"];
-    
     self.mobilePhoneNumber.text =  [self.contactToDisplay.phoneNumbersDict objectForKey:@"mobile"];
 
+    NSDateFormatter *myDateFormatter = [[NSDateFormatter alloc] init];
+    [myDateFormatter setDateFormat:@"MMMM dd, yyyy"];
+    NSString *birthDateString = [myDateFormatter stringFromDate:self.contactToDisplay.birthdate];
+
+
+    self.birthdayLabel.text = [NSString stringWithFormat:@"%@", birthDateString];
     [self downloadContactDetailsFromURL:self.contactToDisplay.detailsURL];
 
 
@@ -81,7 +86,6 @@
 
             [self processData:data];
 
-
         }
 
     }] resume];
@@ -103,7 +107,13 @@
 
     addressDict = [self.contactDetailDictionary objectForKey:@"address"];
     self.addressLabel.text = [NSString stringWithFormat:@"%@ \n%@, %@ %@",[addressDict objectForKey:@"street"], [addressDict objectForKey:@"city"],[addressDict objectForKey:@"state"],[addressDict objectForKey:@"zip"]];
-    self.emailLabel.text =[NSString stringWithFormat:@"Email:%@", [self.contactDetailDictionary objectForKey:@"email"]];
+    self.emailLabel.text =[NSString stringWithFormat:@"Email: %@", [self.contactDetailDictionary objectForKey:@"email"]];
+
+    if ([[self.contactDetailDictionary objectForKey:@"favorite"] boolValue] == YES) {
+
+        self.favoriteImage.alpha = 1.0;
+    }
+    
 
 
 }
@@ -115,8 +125,6 @@
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
 
         NSData *largeImageData = [NSData dataWithContentsOfURL:imageURL];
-
-
 
         if (largeImageData != nil) {
             //Update the UI on the main thread - set the cell's contact image to image retrieved.
