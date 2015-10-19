@@ -112,8 +112,9 @@ static NSString *const cellIdentifier = @"contactCell";
 
                 updateCell.smallContactImage.alpha = 0.0;
                 [UIView animateWithDuration:0.5 animations:^{
-
+                    updateCell.smallContactImage.alpha = 1.0;
                     updateCell.smallContactImage.image = image;
+
                 }];
 
             });
@@ -132,6 +133,15 @@ static NSString *const cellIdentifier = @"contactCell";
     return cell;
 }
 //We can allow the user to make calls directly from list, we just simply need to get the indexPath for the cell selected and use it to get the corresponding number. Once you have the number, use the [UIApplication SharedApplication] to open the phone application and prompt the user to make the call.
+// Override to support editing the table view.
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        // Delete the row from the data source
+        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
+        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+    }
+}
 
 - (IBAction)onMakeCallButtonTapped:(UIButton *)sender {
 
@@ -158,15 +168,7 @@ static NSString *const cellIdentifier = @"contactCell";
  }
  */
 
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }
-}
+
 
 #pragma mark - Navigation
 
