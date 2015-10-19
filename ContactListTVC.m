@@ -46,6 +46,12 @@ static NSString *const cellIdentifier = @"contactCell";
     [self.downloader downloadContactsFromEndPoint];
 }
 
+//we neeed to implement viewWillAppear so that when the user edits a contact - it will reload the table which will update the state of the table and the data displayed.
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self.tableView reloadData];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

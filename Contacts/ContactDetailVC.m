@@ -23,9 +23,15 @@
 @property (weak, nonatomic) IBOutlet UILabel *emailLabel;
 @property (weak, nonatomic) IBOutlet UILabel *birthdayLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *favoriteImage;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *editButton;
+@property CGFloat animatedDistance;
 
 @end
-
+static const CGFloat KEYBOARD_ANIMATION_DURATION = 0.3;
+static const CGFloat MINIMUM_SCROLL_FRACTION = 0.2;
+static const CGFloat MAXIMUM_SCROLL_FRACTION = 0.8;
+static const CGFloat PORTRAIT_KEYBOARD_HEIGHT = 216;
+static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
 @implementation ContactDetailVC
 
 - (void)viewDidLoad {
@@ -64,6 +70,13 @@
     [self downloadContactDetailsFromURL:self.contactToDisplay.detailsURL];
 
 
+}
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    self.contactToDisplay.name = self.nameTextField.text;
+    self.contactToDisplay.companyName = self.companyNameTextField.text;
+    self.contactToDisplay.phoneNumbersDict = @{@"work": self.workPhoneNumber.text, @"home": self.homePhoneNumber.text, @"mobile": self.mobilePhoneNumber.text};
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -106,14 +119,13 @@
     NSMutableDictionary *addressDict = [NSMutableDictionary new];
 
     addressDict = [self.contactDetailDictionary objectForKey:@"address"];
-    self.addressLabel.text = [NSString stringWithFormat:@"%@ \n%@, %@ %@",[addressDict objectForKey:@"street"], [addressDict objectForKey:@"city"],[addressDict objectForKey:@"state"],[addressDict objectForKey:@"zip"]];
+    self.addressLabel.text = [NSString stringWithFormat:@"%@\n%@, %@ %@",[addressDict objectForKey:@"street"], [addressDict objectForKey:@"city"],[addressDict objectForKey:@"state"],[addressDict objectForKey:@"zip"]];
     self.emailLabel.text =[NSString stringWithFormat:@"Email: %@", [self.contactDetailDictionary objectForKey:@"email"]];
 
     if ([[self.contactDetailDictionary objectForKey:@"favorite"] boolValue] == YES) {
 
         self.favoriteImage.alpha = 1.0;
     }
-
 
 
 }
@@ -146,6 +158,46 @@
 
     });
 }
+
+#pragma mark - Actions 
+- (IBAction)onEditButtonTapped:(UIBarButtonItem *)sender {
+
+    //we need to re-enable the user interaction for fields that we will let user edit. Change the border of the textfields to let the user know
+    //where he/she can edit information.
+    if ([self.editButton.title isEqualToString:@"Edit"]) {
+        self.nameTextField.userInteractionEnabled = YES;
+        self.companyNameTextField.userInteractionEnabled = YES;
+        self.workPhoneNumber.userInteractionEnabled = YES;
+        self.mobilePhoneNumber.userInteractionEnabled = YES;
+        self.editButton.title = @"Done";
+
+        self.nameTextField.borderStyle = UITextBorderStyleLine;
+        self.companyNameTextField.borderStyle = UITextBorderStyleLine;
+        self.workPhoneNumber.borderStyle = UITextBorderStyleLine;
+        self.homePhoneNumber.borderStyle = UITextBorderStyleLine;
+        self.mobilePhoneNumber.borderStyle = UITextBorderStyleLine;
+
+    }else if ([self.editButton.title isEqualToString:@"Done"]) {
+
+        self.nameTextField.borderStyle = UITextBorderStyleNone;
+        self.companyNameTextField.borderStyle = UITextBorderStyleNone;
+        self.workPhoneNumber.borderStyle = UITextBorderStyleNone;
+        self.homePhoneNumber.borderStyle = UITextBorderStyleNone;
+        self.mobilePhoneNumber.borderStyle = UITextBorderStyleNone;
+
+        self.nameTextField.userInteractionEnabled = NO;
+        self.companyNameTextField.userInteractionEnabled = NO;
+        self.workPhoneNumber.userInteractionEnabled = NO;
+        self.mobilePhoneNumber.userInteractionEnabled = NO;
+
+
+        self.editButton.title = @"Edit";
+
+
+    }
+
+}
+
 - (IBAction)onCallWorkPhoneButtonTapped:(UIButton *)sender {
 
     [self makeCallwithPhoneNumber:[self.contactToDisplay.phoneNumbersDict objectForKey:@"work"]];
@@ -249,5 +301,75 @@
     
     [self presentViewController:alert animated:YES completion:nil];
 }
+
+
+#pragma Marks - hiding keyboard
+- (void)textFieldDidBeginEditing:(UITextField *)textField{
+    CGRect textFieldRect =
+    [self.view.window convertRect:textField.bounds fromView:textField];
+    CGRect viewRect =
+    [self.view.window convertRect:self.view.bounds fromView:self.view];
+    CGFloat midline = textFieldRect.origin.y + 0.5 * textFieldRect.size.height;
+    CGFloat numerator =
+    midline - viewRect.origin.y
+    - MINIMUM_SCROLL_FRACTION * viewRect.size.height;
+    CGFloat denominator =
+    (MAXIMUM_SCROLL_FRACTION - MINIMUM_SCROLL_FRACTION)
+    * viewRect.size.height;
+    CGFloat heightFraction = numerator / denominator;
+    if (heightFraction < 0.0){
+        heightFraction = 0.0;
+    }
+    else if(heightFraction > 1.0){
+        heightFraction = 1.0;
+    }
+    UIInterfaceOrientation orientation =
+    [[UIApplication sharedApplication] statusBarOrientation];
+    if (orientation == UIInterfaceOrientationPortrait ||
+        orientation == UIInterfaceOrientationPortraitUpsideDown){
+        self.animatedDistance = floor(PORTRAIT_KEYBOARD_HEIGHT * heightFraction);
+    }
+    else{
+        self.animatedDistance = floor(LANDSCAPE_KEYBOARD_HEIGHT * heightFraction);
+    }
+    CGRect viewFrame = self.view.frame;
+    viewFrame.origin.y -= self.animatedDistance;
+
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationBeginsFromCurrentState:YES];
+    [UIView setAnimationDuration:KEYBOARD_ANIMATION_DURATION];
+
+    [self.view setFrame:viewFrame];
+
+    [UIView commitAnimations];
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textfield{
+
+    CGRect viewFrame = self.view.frame;
+    viewFrame.origin.y += self.animatedDistance;
+
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationBeginsFromCurrentState:YES];
+    [UIView setAnimationDuration:KEYBOARD_ANIMATION_DURATION];
+
+    [self.view setFrame:viewFrame];
+
+    [UIView commitAnimations];
+}
+////hide keyboard when the user clicks return
+-(BOOL)textFieldShouldReturn:(UITextField *)textField{
+    [textField resignFirstResponder];
+
+    [self.view endEditing:true];
+    return true;
+}
+//hide keyboard when user touches outside.
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [self.view endEditing:YES];
+}
+
+
 
 @end

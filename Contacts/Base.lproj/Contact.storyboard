@@ -142,7 +142,7 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uyb-UP-nes">
+                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uyb-UP-nes">
                                 <rect key="frame" x="135" y="98" width="173" height="30"/>
                                 <animations/>
                                 <constraints>
@@ -150,8 +150,11 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="Zud-eW-EX9" id="aDQ-xF-F4i"/>
+                                </connections>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WVV-97-F70">
+                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WVV-97-F70">
                                 <rect key="frame" x="135" y="164" width="169" height="30"/>
                                 <animations/>
                                 <constraints>
@@ -159,6 +162,9 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="Zud-eW-EX9" id="wey-dF-3cm"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0hi-2k-s9s">
                                 <rect key="frame" x="62" y="235" width="212" height="30"/>
@@ -168,6 +174,9 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="Zud-eW-EX9" id="O1A-y0-pfX"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1zl-kE-phs">
                                 <rect key="frame" x="61" y="268" width="213" height="30"/>
@@ -177,15 +186,9 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="34o-0i-bUh">
-                                <rect key="frame" x="65" y="300" width="209" height="30"/>
-                                <animations/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="Cwa-pq-BOV"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="Zud-eW-EX9" id="Lmf-Mh-f3o"/>
+                                </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phones:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lj4-Hx-UeI">
                                 <rect key="frame" x="2" y="218" width="62" height="21"/>
@@ -361,6 +364,18 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="34o-0i-bUh">
+                                <rect key="frame" x="62" y="300" width="212" height="30"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Cwa-pq-BOV"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="Zud-eW-EX9" id="bjq-XF-Xc1"/>
+                                </connections>
+                            </textField>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -412,7 +427,7 @@
                             <constraint firstItem="xRh-eS-RQl" firstAttribute="top" secondItem="WVV-97-F70" secondAttribute="bottom" constant="40" id="lk3-D1-X7a"/>
                             <constraint firstItem="JUM-c8-Kuf" firstAttribute="top" secondItem="QDr-5V-Spf" secondAttribute="bottom" constant="33" id="llr-2c-crm"/>
                             <constraint firstItem="CcB-Zb-dRg" firstAttribute="leading" secondItem="rVw-0x-DRf" secondAttribute="leadingMargin" constant="-12" id="m9U-86-IYS"/>
-                            <constraint firstItem="34o-0i-bUh" firstAttribute="leading" secondItem="HP0-Dk-m4Q" secondAttribute="trailing" constant="9" id="nHC-f1-Mx8"/>
+                            <constraint firstItem="34o-0i-bUh" firstAttribute="leading" secondItem="HP0-Dk-m4Q" secondAttribute="trailing" constant="6" id="nHC-f1-Mx8"/>
                             <constraint firstItem="lj4-Hx-UeI" firstAttribute="top" secondItem="zyT-KF-VMG" secondAttribute="bottom" constant="24" id="pIj-dE-eYN"/>
                             <constraint firstAttribute="trailingMargin" secondItem="JsB-qV-JHB" secondAttribute="trailing" constant="22" id="pVR-ix-1CY"/>
                             <constraint firstItem="ATV-qf-CkG" firstAttribute="leading" secondItem="hjH-al-nEh" secondAttribute="trailing" constant="2" id="r20-gz-kVw"/>
@@ -427,11 +442,19 @@
                             <constraint firstItem="HP0-Dk-m4Q" firstAttribute="leading" secondItem="rVw-0x-DRf" secondAttribute="leadingMargin" constant="-11" id="zqn-NU-QCX"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="3ue-0c-zHz">
+                        <barButtonItem key="rightBarButtonItem" title="Edit" id="Z1M-nb-jQ2">
+                            <connections>
+                                <action selector="onEditButtonTapped:" destination="Zud-eW-EX9" id="0UT-CT-hgC"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="addressLabel" destination="6fH-4u-9c4" id="QTO-T5-iIr"/>
                         <outlet property="birthdayLabel" destination="JsB-qV-JHB" id="xCA-hC-1Pl"/>
                         <outlet property="companyNameTextField" destination="WVV-97-F70" id="gWI-LQ-RAs"/>
+                        <outlet property="editButton" destination="Z1M-nb-jQ2" id="w23-Oz-wVt"/>
                         <outlet property="emailLabel" destination="hjH-al-nEh" id="plU-03-TVe"/>
                         <outlet property="favoriteImage" destination="2fb-fG-9uN" id="Wai-7L-mib"/>
                         <outlet property="homePhoneNumber" destination="1zl-kE-phs" id="Bx2-kC-kcp"/>
