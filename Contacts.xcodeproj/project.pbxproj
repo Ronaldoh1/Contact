@@ -36,6 +36,8 @@
 		F22B6F1C1BD4BDB100D566DD /* AppIcon76x76~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = F22B6F0F1BD4BDB100D566DD /* AppIcon76x76~ipad.png */; settings = {ASSET_TAGS = (); }; };
 		F22B6F1F1BD4BF5500D566DD /* ContactDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F22B6F1E1BD4BF5500D566DD /* ContactDetailVC.m */; settings = {ASSET_TAGS = (); }; };
 		F24971DB1BD4D1FB0077F91D /* ContactDetailDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = F24971DA1BD4D1FB0077F91D /* ContactDetailDownloader.m */; settings = {ASSET_TAGS = (); }; };
+		F24971DD1BD4E9870077F91D /* mapButtonIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = F24971DC1BD4E9870077F91D /* mapButtonIcon.png */; settings = {ASSET_TAGS = (); }; };
+		F24971DF1BD4EA270077F91D /* emailIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = F24971DE1BD4EA270077F91D /* emailIcon.png */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -77,6 +79,8 @@
 		F22B6F1E1BD4BF5500D566DD /* ContactDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactDetailVC.m; sourceTree = "<group>"; };
 		F24971D91BD4D1FB0077F91D /* ContactDetailDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactDetailDownloader.h; sourceTree = "<group>"; };
 		F24971DA1BD4D1FB0077F91D /* ContactDetailDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactDetailDownloader.m; sourceTree = "<group>"; };
+		F24971DC1BD4E9870077F91D /* mapButtonIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mapButtonIcon.png; sourceTree = "<group>"; };
+		F24971DE1BD4EA270077F91D /* emailIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = emailIcon.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -198,6 +202,8 @@
 		F22B6EEC1BD4835C00D566DD /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				F24971DE1BD4EA270077F91D /* emailIcon.png */,
+				F24971DC1BD4E9870077F91D /* mapButtonIcon.png */,
 				F22B6EEF1BD4866C00D566DD /* contactSplashScreen.png */,
 				F20918C91BD3206000FD60EB /* favoriteIcon.png */,
 				F22B6EA51BD44F1200D566DD /* phoneIcon.png */,
@@ -268,11 +274,13 @@
 				F22B6EA41BD43A1100D566DD /* defaultImage.png in Resources */,
 				F22B6F121BD4BDB100D566DD /* AppIcon29x29@2x~ipad.png in Resources */,
 				F22B6F191BD4BDB100D566DD /* AppIcon60x60@2x.png in Resources */,
+				F24971DD1BD4E9870077F91D /* mapButtonIcon.png in Resources */,
 				F20918CA1BD3206000FD60EB /* favoriteIcon.png in Resources */,
 				F22B6F161BD4BDB100D566DD /* AppIcon40x40@2x~ipad.png in Resources */,
 				F20918B61BD2FDE700FD60EB /* LaunchScreen.storyboard in Resources */,
 				F22B6F101BD4BDB100D566DD /* AppIcon29x29.png in Resources */,
 				F22B6F1A1BD4BDB100D566DD /* AppIcon60x60@3x.png in Resources */,
+				F24971DF1BD4EA270077F91D /* emailIcon.png in Resources */,
 				F22B6F131BD4BDB100D566DD /* AppIcon29x29@3x.png in Resources */,
 				F22B6F151BD4BDB100D566DD /* AppIcon40x40@2x.png in Resources */,
 				F22B6F171BD4BDB100D566DD /* AppIcon40x40@3x.png in Resources */,
