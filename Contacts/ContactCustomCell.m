@@ -27,10 +27,6 @@
     // Configure the view for the selected state
 }
 
-- (IBAction)onMakeCallButtonTapped:(id)sender {
 
-
-    NSLog(@"callingggg!!!");
-}
 
 @end

@@ -10,6 +10,7 @@
 #import "ContactsDownloader.h"
 #import "Contact.h"
 #import "ContactCustomCell.h"
+#import "ContactDetailVC.h"
 
 @interface ContactListTVC ()<ContactsDownloaderDelegate>
 
@@ -32,7 +33,7 @@ static NSString *const cellIdentifier = @"contactCell";
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 
-    // hange the Nav Title and set it to white.
+    // Add titleView to NavBar
     UILabel *titleView = (UILabel *)self.navigationItem.titleView;
     titleView = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 50, 30)];
     titleView.font = [UIFont fontWithName:@"Helvetica Bold" size:22];
@@ -197,15 +198,26 @@ static NSString *const cellIdentifier = @"contactCell";
 }
 */
 
-/*
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
+// 1. Get a reference to the destiantion ViewController
+// 2. Get the indexPath of the selected row.
+// 3. Check if segue identifer is equal to "toDetailVC"
+// 4. Use the indexPath to obtain the correct Contact to pass to the next view controller
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+
+    ContactDetailVC *destinationVC = segue.destinationViewController;
+
+    NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+
+    if ([segue.identifier isEqualToString:@"toDetailVC"]) {
+
+        destinationVC.contactToDisplay = (Contact *)self.sortedContactsArray[indexPath.row];
+        
+    }
 }
-*/
 
 //Helper Methods to display alert to user.
 

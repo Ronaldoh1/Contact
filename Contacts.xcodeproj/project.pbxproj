@@ -34,6 +34,8 @@
 		F22B6F1A1BD4BDB100D566DD /* AppIcon60x60@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F22B6F0D1BD4BDB100D566DD /* AppIcon60x60@3x.png */; settings = {ASSET_TAGS = (); }; };
 		F22B6F1B1BD4BDB100D566DD /* AppIcon76x76@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = F22B6F0E1BD4BDB100D566DD /* AppIcon76x76@2x~ipad.png */; settings = {ASSET_TAGS = (); }; };
 		F22B6F1C1BD4BDB100D566DD /* AppIcon76x76~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = F22B6F0F1BD4BDB100D566DD /* AppIcon76x76~ipad.png */; settings = {ASSET_TAGS = (); }; };
+		F22B6F1F1BD4BF5500D566DD /* ContactDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F22B6F1E1BD4BF5500D566DD /* ContactDetailVC.m */; settings = {ASSET_TAGS = (); }; };
+		F24971DB1BD4D1FB0077F91D /* ContactDetailDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = F24971DA1BD4D1FB0077F91D /* ContactDetailDownloader.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -71,6 +73,10 @@
 		F22B6F0D1BD4BDB100D566DD /* AppIcon60x60@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon60x60@3x.png"; sourceTree = "<group>"; };
 		F22B6F0E1BD4BDB100D566DD /* AppIcon76x76@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon76x76@2x~ipad.png"; sourceTree = "<group>"; };
 		F22B6F0F1BD4BDB100D566DD /* AppIcon76x76~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon76x76~ipad.png"; sourceTree = "<group>"; };
+		F22B6F1D1BD4BF5500D566DD /* ContactDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactDetailVC.h; sourceTree = "<group>"; };
+		F22B6F1E1BD4BF5500D566DD /* ContactDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactDetailVC.m; sourceTree = "<group>"; };
+		F24971D91BD4D1FB0077F91D /* ContactDetailDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactDetailDownloader.h; sourceTree = "<group>"; };
+		F24971DA1BD4D1FB0077F91D /* ContactDetailDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactDetailDownloader.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,7 +110,6 @@
 			isa = PBXGroup;
 			children = (
 				F20918CB1BD3206400FD60EB /* Images */,
-				F22B6EEC1BD4835C00D566DD /* Resources */,
 				F20918BF1BD2FE2500FD60EB /* Data */,
 				F20918BE1BD2FE0500FD60EB /* Main */,
 				F20918BD1BD2FDF100FD60EB /* Delegate */,
@@ -139,9 +144,11 @@
 			children = (
 				F20918C31BD3118900FD60EB /* ContactListTVC.h */,
 				F20918C41BD3118900FD60EB /* ContactListTVC.m */,
-				F20918AC1BD2FDE700FD60EB /* Contact.storyboard */,
 				F20918C61BD316E600FD60EB /* ContactCustomCell.h */,
 				F20918C71BD316E600FD60EB /* ContactCustomCell.m */,
+				F22B6F1D1BD4BF5500D566DD /* ContactDetailVC.h */,
+				F22B6F1E1BD4BF5500D566DD /* ContactDetailVC.m */,
+				F20918AC1BD2FDE700FD60EB /* Contact.storyboard */,
 			);
 			name = Main;
 			sourceTree = "<group>";
@@ -153,6 +160,8 @@
 				F20918C11BD3013000FD60EB /* Contact.m */,
 				F20918D11BD3269900FD60EB /* ContactsDownloader.h */,
 				F20918D21BD3269900FD60EB /* ContactsDownloader.m */,
+				F24971D91BD4D1FB0077F91D /* ContactDetailDownloader.h */,
+				F24971DA1BD4D1FB0077F91D /* ContactDetailDownloader.m */,
 			);
 			name = Data;
 			sourceTree = "<group>";
@@ -160,6 +169,7 @@
 		F20918CB1BD3206400FD60EB /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				F22B6EEC1BD4835C00D566DD /* Resources */,
 				F22B6EA71BD47F6100D566DD /* App Icon */,
 			);
 			name = Images;
@@ -284,12 +294,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				F20918B11BD2FDE700FD60EB /* Contacts.xcdatamodeld in Sources */,
+				F22B6F1F1BD4BF5500D566DD /* ContactDetailVC.m in Sources */,
 				F20918C21BD3013000FD60EB /* Contact.m in Sources */,
 				F20918C51BD3118900FD60EB /* ContactListTVC.m in Sources */,
 				F20918C81BD316E600FD60EB /* ContactCustomCell.m in Sources */,
 				F20918D31BD3269900FD60EB /* ContactsDownloader.m in Sources */,
 				F20918A81BD2FDE700FD60EB /* AppDelegate.m in Sources */,
 				F20918A51BD2FDE700FD60EB /* main.m in Sources */,
+				F24971DB1BD4D1FB0077F91D /* ContactDetailDownloader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
