@@ -77,7 +77,7 @@ static NSString *const cellIdentifier = @"contactCell";
 }
 //Number of rows to display in each section.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.contactsArray.count;
+    return self.sortedContactsArray.count;
 }
 
 #pragma mark - Table view delegate methods
@@ -137,10 +137,9 @@ static NSString *const cellIdentifier = @"contactCell";
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the row from the data source
+        [self.sortedContactsArray removeObjectAtIndex:indexPath.row];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }
+    } 
 }
 
 - (IBAction)onMakeCallButtonTapped:(UIButton *)sender {
