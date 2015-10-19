@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" initialViewController="01J-lp-oVM">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -15,8 +16,42 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ARF-zC-XvS">
+                                <rect key="frame" x="-8" y="28" width="336" height="76"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="76" id="Bf0-RX-6VG"/>
+                                </constraints>
+                                <attributedString key="attributedText">
+                                    <fragment content="Contacts">
+                                        <attributes>
+                                            <color key="NSColor" red="1" green="0.40000000000000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="38" name="HelveticaNeue-Bold"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="contactSplashScreen.png" translatesAutoresizingMaskIntoConstraints="NO" id="DLB-Xy-q3w">
+                                <rect key="frame" x="50" y="130" width="220" height="220"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="220" id="7yo-aZ-H6M"/>
+                                    <constraint firstAttribute="height" constant="220" id="r7Y-7g-nUY"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="DLB-Xy-q3w" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="HnY-6a-Tr5"/>
+                            <constraint firstItem="ARF-zC-XvS" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" constant="-174" id="css-DF-m33"/>
+                            <constraint firstItem="DLB-Xy-q3w" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="fS0-9f-5YX"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ARF-zC-XvS" secondAttribute="trailing" constant="-24" id="h7a-9L-9dU"/>
+                            <constraint firstItem="ARF-zC-XvS" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="-24" id="rvX-Bw-oBe"/>
+                        </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                 </viewController>
@@ -25,4 +60,7 @@
             <point key="canvasLocation" x="-112" y="294"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="contactSplashScreen.png" width="500" height="500"/>
+    </resources>
 </document>
