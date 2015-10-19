@@ -15,6 +15,7 @@
 
 @property ContactsDownloader *downloader;
 @property NSMutableArray *contactsArray;
+@property NSMutableArray *sortedContactsArray;
 
 @end
 
@@ -55,6 +56,7 @@ static NSString *const cellIdentifier = @"contactCell";
 
 #pragma mark - Downloader Delegate
 
+//This delegate method will provide us dictionary which we will need to parse and obtain the information that we need for our contact objects. Also we will sort the contacts by person's  name.
 -(void)gotContacts:(NSDictionary *)dictionary{
 
     for (NSDictionary *dict in dictionary) {
@@ -63,6 +65,11 @@ static NSString *const cellIdentifier = @"contactCell";
         [self.contactsArray addObject:contact];
     }
 
+    //Sort the Array
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc]initWithKey:@"name" ascending:YES];
+    NSArray *sortedDescriptors = [NSArray arrayWithObject:sortDescriptor];
+    NSArray *sortedArray = [self.contactsArray sortedArrayUsingDescriptors:sortedDescriptors];
+    self.sortedContactsArray = [NSMutableArray arrayWithArray:sortedArray.copy];
     [self.tableView reloadData];
 }
 
@@ -91,7 +98,7 @@ static NSString *const cellIdentifier = @"contactCell";
     cell.smallContactImage.image = nil;
 
     //create a contact for each object in the array.
-    Contact *contact = (Contact *)self.contactsArray[indexPath.row];
+    Contact *contact = (Contact *)self.sortedContactsArray[indexPath.row];
 
     //Get the contact image
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
@@ -144,7 +151,7 @@ static NSString *const cellIdentifier = @"contactCell";
 
     NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:phoneButtonPosition];
 
-    Contact *contact = (Contact *)self.contactsArray[indexPath.row];
+    Contact *contact = (Contact *)self.sortedContactsArray[indexPath.row];
 
     NSString *phoneNumber = [contact.phoneNumbersDict objectForKey:@"work"];
 
@@ -156,6 +163,8 @@ static NSString *const cellIdentifier = @"contactCell";
 
 }
 
+
+
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -164,7 +173,6 @@ static NSString *const cellIdentifier = @"contactCell";
 }
 */
 
-/*
 // Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
@@ -174,7 +182,6 @@ static NSString *const cellIdentifier = @"contactCell";
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
     }   
 }
-*/
 
 /*
 // Override to support rearranging the table view.
