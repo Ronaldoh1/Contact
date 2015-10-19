@@ -60,6 +60,7 @@
                                             </constraints>
                                             <state key="normal" backgroundImage="phoneIcon.png"/>
                                             <connections>
+                                                <action selector="onMakeCallButtonTapped:" destination="USi-9s-mTY" eventType="touchUpInside" id="GPr-TV-XMc"/>
                                                 <action selector="onMakeCallButtonTapped:" destination="35R-VY-e8f" eventType="touchUpInside" id="opE-dA-cXF"/>
                                             </connections>
                                         </button>

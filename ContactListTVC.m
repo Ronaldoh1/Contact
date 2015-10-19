@@ -136,6 +136,25 @@ static NSString *const cellIdentifier = @"contactCell";
     
     return cell;
 }
+//We can allow the user to make calls directly from list, we just simply need to get the indexPath for the cell selected and use it to get the corresponding number. Once you have the number, use the [UIApplication SharedApplication] to open the phone application and prompt the user to make the call.
+
+- (IBAction)onMakeCallButtonTapped:(UIButton *)sender {
+
+    CGPoint phoneButtonPosition = [sender convertPoint:CGPointZero toView:self.tableView];
+
+    NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:phoneButtonPosition];
+
+    Contact *contact = (Contact *)self.contactsArray[indexPath.row];
+
+    NSString *phoneNumber = [contact.phoneNumbersDict objectForKey:@"work"];
+
+    NSString *phoneString = [NSString stringWithFormat:@"telprompt://%@",phoneNumber];
+
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:phoneString]];
+
+
+
+}
 
 /*
 // Override to support conditional editing of the table view.
